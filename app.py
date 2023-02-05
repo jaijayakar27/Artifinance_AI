@@ -3,8 +3,9 @@ import numpy as np
 import json
 import pickle
 from flask_cors import cross_origin
-
-model = pickle.load(open('model.pkl','rb'))
+import bz2file
+model = bz2file.BZ2File('model.pbz2','rb')
+model = pickle.load(model)
 app = Flask(__name__)
 @app.route('/')
 def index():
