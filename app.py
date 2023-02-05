@@ -17,18 +17,16 @@ def predict():
     prediction = model.predict(query)
     return jsonify({'predictions':list(prediction)})
 @app.route('/webhook',methods=['GET','POST'])
-@cross_origin
+@cross_origin()
 def webhook():
-    req = request.get_json(silent=True ,force=True)
+    req = request.json
     res = mlprediction(req)
-    res = json.dumps(res,indent=4)
-    r= make_response(res)
-    r.headers['Content-type']='application/json'
-    return r
+    res.headers['Content-Type']='application/json'
+    return res
 
 def mlprediction(req):
-    result = req.get("queryresult")
-    parameters = req.get("parameters")
+    result = req.get("queryResult")
+    parameters = result.get("parameters")
     income = parameters.get("Income")
     age = parameters.get("Age") 
     exp = parameters.get("Experience")
@@ -42,43 +40,45 @@ def mlprediction(req):
     elif str.lower(mar) == 'no' or str.lower(mar)=='n':
         mar = int(0)
     else:
-        return {
+        return jsonify({
             "fulfillmentText": "Error please start again and enter the correct information"  
-        }   
+        })  
     if str.lower(house) == 'yes' or str.lower(house)=='y':
         house = int(1)
     elif str.lower(house) == 'no' or str.lower(house)=='n':
         house = int(0)
     else:
-        return {
+        return jsonify({
             "fulfillmentText": "Error please start again and enter the correct information"  
-        }   
+        })
     if str.lower(car) == 'yes' or str.lower(car)=='y':
         car = int(1)
     elif str.lower(car) == 'no' or str.lower(car)=='n':
         car = int(0)
     else:
-        return {
+        return jsonify({
             "fulfillmentText": "Error please start again and enter the correct information"  
-        }   
+        }) 
     try:
         int_features = [income,age,exp,mar,house,car,Cexp,Chouse]
         final_features = [np.array(int_features)]
     
     except ValueError:
-        return {
+        return jsonify({
             "fulfillmentText": "Incorrect information supplied"
-        }
+        })
     intent = result.get("intent").get('displayName')
 
     if intent == "Default Welcome Intent - yes":
         prediction = model.predict(final_features)
-        if(prediction==1):
+        if(prediction==[0]):
             status = 'Congratulations you are eligible for a loan 😀'
         else:
             status = 'We are sorry you are not eligible for a loan at the moment'
         fulfillmentText= status
-        return {"fulfillmentText":fulfillmentText}
+        return jsonify({"fulfillmentText":fulfillmentText})
+    else:
+        return jsonify({"fullfillmentText":"Error da"})
 
 if __name__ == '__main__':
     app.run(debug=True)

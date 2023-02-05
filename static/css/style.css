@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Prosto+One&display=swap');
+body{
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  padding: 2vh;
+  background-image: url("../Image/download.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+.header {
+  font-family: 'Anton', sans-serif;
+  font-family: 'Prosto One';
+  display: flex;
+  background-image: linear-gradient(to right, #000428  ,  #2c3e50);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  opacity: 60%; 
+  height: 10vh;
+  justify-content: space-around;
+  color:white
+  }
+.left{
+  border: none;
+  display: flex;
+  text-align: left;
+  flex-direction: row;
+}
+.right{
+  border: none;
+  display: flex;
+  flex-direction: row;
+}
+.spaceb{
+    padding-left: 100px;
+  padding-right: 330px;
+}
+.column{
+  border: none;
+  font-size: larger;
+  border-radius: 26px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 25px;
+  justify-content:center;
+  text-align: center;
+  font-size: larger;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 25px;
+  margin-left: 5px;
+  transition: all 0.6s ease-out;
+}
+.column:hover,.column:focus{
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+.header .column:hover{
+    background-color:#48b1bf;
+    color: black;
+    cursor: pointer;
+}
+#onelogo{
+  cursor: pointer;
+  padding-left: 10px;
+  height: 10vh;
+}
+#profile_icon{
+  padding-right: 7px;
+  cursor: pointer;
+  align-content: center;
+}
+/* #profile_icon:hover{
+  background-color: #639ac5;
+  color: aliceblue;
+} */
+#chat{
+  border: none;
+  border-radius: 20px;
+  height: 68vh;
+}
+.space{
+  height: 20px;
+  width:100%;
+}
+.below{
+  bottom: -470px;
+  height: 50px;
+  width:200px;
+  border: none;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+.footer{
+  font-family: 'Anton', sans-serif;
+  font-family: 'Prosto One';
+  display: flex;
+  justify-content: space-around;
+  height: 10vh;
+  border: none;
+  border-radius: 10px;
+  opacity: 60%; 
+ color:white;
+ background-image: linear-gradient(to right, #000428  ,  #2c3e50);
+ backdrop-filter: blur(10px);
+}
+.footer li{
+  display:flex;
+  cursor: pointer;
+  font-size:large;
+  justify-content: center;
+  font-weight:100;
+  height:50px;
+  border:none;
+  border-radius:26px;
+  align-items: center;
+  /* margin-right:10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px; */
+  padding: 10px;
+  margin: 10px;
+  transition: all 0.6s ease-out;
+}
+.footer li:hover{
+  background-color:#48b1bf;
+      color: black;
+}
+.main{
+  display: flex;
+  justify-content: space-between;
+  height: 68vh;
+}
+/* .telegram {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  font-family: 'Anton', sans-serif;
+  font-family: 'Prosto One';
+  font-size: larger;
+  background:#f2eefc; */
+  /* box-shadow:1px 1px 5px #27A5E7;  */
+  /* border-radius:15px;
+  transition: all 0.6s ease-out;
+}
+.telegram i{
+  height: 5vh;
+  text-align: center;
+  font-size: larger;
+}
+.telegram:hover{
+  background-color:#27A5E7;
+      color: black;
+      cursor: pointer;
+} */
+.mainlogo{
+  height: 68vh;
+}
+.telegram {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.telegram i{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:x-large;
+}
+.telegram a{
+  color: white;
+}
